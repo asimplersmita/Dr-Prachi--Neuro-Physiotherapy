@@ -4,35 +4,34 @@ A one-page, mobile-friendly website for Dr. Prachi Parkhi (BPT, MPT — Neurosci
 about & qualifications, twelve services (neuro-focused), patient reviews with before/after photos,
 an enquiry form, WhatsApp contact, a patient review link and a review-approval admin panel.
 
-Plain HTML, CSS and JavaScript — no build step, no framework.
+Plain HTML, CSS and JavaScript — no build step, no framework, **no sub-folders**.
 
-## Folder structure
+## Files (all at the top level)
 
 ```
 .
-├── index.html            # the website
-├── css/style.css         # all styles (light + dark mode)
-├── js/main.js            # tabs, reviews, forms, admin, WhatsApp links
-├── images/
-│   ├── prachi-parkhi.jpg # profile photo (replace with the original, ~400×400)
-│   └── favicon.svg       # browser-tab icon
-├── 404.html              # "page not found" page
-├── robots.txt            # search-engine rules
-├── sitemap.xml           # page list for Google
-├── site.webmanifest      # "add to home screen" details
-├── CNAME.example         # rename to CNAME for a custom domain on GitHub Pages
-├── .env.example          # sample settings for a future backend (no secrets)
+├── index.html          # the website
+├── style.css           # all styles (light + dark mode)
+├── main.js             # tabs, reviews, forms, admin, WhatsApp links
+├── prachi-parkhi.jpg   # profile photo (replace with the original, ~400×400)
+├── favicon.svg         # browser-tab icon
+├── 404.html            # "page not found" page
+├── robots.txt          # search-engine rules
+├── sitemap.xml         # page list for Google
+├── site.webmanifest    # "add to home screen" details
+├── CNAME.example       # rename to CNAME for a custom domain on GitHub Pages
+├── .env.example        # sample settings for a future backend (no secrets)
 ├── .editorconfig
 └── .gitignore
 ```
 
-## Run locally
+## Upload to GitHub (web)
 
-Open `index.html` in a browser, or serve the folder:
+Open the repository → **Add file → Upload files** → select **all files** from this zip → **Commit changes** to `main`.
+All files sit at the top level, so the file picker is enough — no folders to create.
 
-```bash
-npx serve .          # or: python -m http.server 8000
-```
+> Files starting with a dot (`.gitignore`, `.env.example`, `.editorconfig`) may be hidden in Windows.
+> They are optional for the website to work.
 
 ## Useful links on the page
 
@@ -44,12 +43,12 @@ npx serve .          # or: python -m http.server 8000
 
 ## Before going live — checklist
 
-- [ ] **WhatsApp number** — `js/main.js` → `WA_NUMBER` (format `91XXXXXXXXXX`)
+- [ ] **WhatsApp number** — `main.js` → `WA_NUMBER` (format `91XXXXXXXXXX`)
 - [ ] **Phone shown on page** — `index.html`, contact section (`+91 98000 00000`)
-- [ ] **Website address** — replace `https://www.example.com` in `index.html`, `robots.txt`, `sitemap.xml`, and `SITE_URL` in `js/main.js`
-- [ ] **Profile photo** — replace `images/prachi-parkhi.jpg` with the original photo
-- [ ] **Sample reviews** — remove the `RAW` sample list in `js/main.js` once real reviews exist
-- [ ] **Demo banner** — remove the `<div class="demo">` line at the top of `index.html`
+- [ ] **Website address** — replace `https://www.example.com` in `index.html`, `robots.txt`, `sitemap.xml`, and `SITE_URL` in `main.js`
+- [ ] **Profile photo** — replace `prachi-parkhi.jpg` with the original photo (same file name)
+- [ ] **Sample reviews** — remove the `RAW` sample list in `main.js` once real reviews exist
+- [ ] **Demo banner** — remove the `<div class="demo">` line near the top of `index.html`
 - [ ] **Reviews & enquiries backend** — see below
 - [ ] **Admin login** — replace the demo PIN with a real login (the PIN in `main.js` is visible to anyone)
 
@@ -57,31 +56,17 @@ npx serve .          # or: python -m http.server 8000
 
 In this version, submitted reviews and photos are saved only in the **browser they were submitted from**
 (`localStorage`). A patient's review on their phone will not reach the doctor's admin panel.
-
-For the live site, connect the review form, admin panel and enquiry form to a small backend, e.g.:
-
-- **Firebase** (Firestore + Storage + Auth) or **Supabase** — free tiers are enough to start, or
-- **PHP + MySQL** on regular web hosting.
-
-Store photos in cloud storage (not in the page), and keep keys in `.env` (never commit it).
+For the live site, connect the forms to a small backend (Firebase / Supabase, or PHP + MySQL).
 
 ## Deploy
 
-**GitHub Pages:** push to GitHub → *Settings → Pages* → Source: `main` branch, `/ (root)`.
-For a custom domain, rename `CNAME.example` to `CNAME` and put your domain in it.
+**Vercel:** import the GitHub repository → Framework preset **Other** → no build command → output directory blank (root). Every commit to `main` redeploys.
 
-**Netlify / Vercel:** import the repository; no build command, publish directory `/`.
+**GitHub Pages:** *Settings → Pages* → Source: `main` branch, `/ (root)`.
 
-## First push
+## Run locally
 
-```bash
-git init
-git add .
-git commit -m "Initial website for Dr. Prachi Parkhi"
-git branch -M main
-git remote add origin https://github.com/<your-account>/prachi-parkhi-website.git
-git push -u origin main
-```
+Double-click `index.html`, or serve the folder: `npx serve .`
 
 ---
 © 2026 Dr. Prachi Parkhi. All rights reserved.
