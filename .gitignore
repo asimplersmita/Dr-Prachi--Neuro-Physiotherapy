@@ -1,0 +1,26 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+
+# Dependencies & builds (if added later)
+node_modules/
+dist/
+build/
+.cache/
+
+# Environment & secrets — never commit these
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+# Local originals / drafts
+drafts/
+*.psd
